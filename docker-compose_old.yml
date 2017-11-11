@@ -1,11 +1,26 @@
 zup-api:
-  image: institutotim/zup-api:cascavel1.3
+  image: institutotim/zup-api:v1.1.11
   env_file:
     - ../config/api.env
   volumes:
     - /opt/zup/uploads:/usr/src/app/public/uploads
     - /opt/zup/logs/api:/usr/src/app/log
     - /opt/zup/config:/usr/src/app/config/permissions
+    - /opt/zup/shared_images:/usr/src/app/public/shared_images
+  ports:
+    - 8383:80
+  links:
+   - redis
+   - postgres
+
+zup-api-internal:
+  image: institutotim/zup-api:v1.1.11
+  env_file:
+    - ../config/internal/api.env
+  volumes:
+    - /opt/zup/uploads:/usr/src/app/public/uploads
+    - /opt/zup/logs/api/internal:/usr/src/app/log
+    - /opt/zup/config/internal:/usr/src/app/config/permissions
     - /opt/zup/shared_images:/usr/src/app/public/shared_images
   ports:
     - 8282:80
@@ -32,3 +47,13 @@ web:
    - /opt/zup/logs/nginx:/var/log/nginx
   ports:
     - 8080:80
+
+web-internal:
+  image: institutotim/zup-web:v1.1.11
+  env_file:
+    - ../config/internal/web.env
+  volumes:
+    - /etc/localtime:/etc/localtime:ro
+    - /opt/zup/logs/nginx:/var/log/nginx
+  ports:
+    - 80:80
