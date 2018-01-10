@@ -10,6 +10,6 @@
 <tr>
   <td bgcolor="#f3f3f3" style="padding:30px 45px;" align="center" valign="top">
     <span style="color:#444444; font-size:15px; line-height:19px; font-style:italic; font-weight:400; font-family:'Open Sans', Arial; margin:0 0 15px; display:block;"><%= @comment.message %></span>
-    <span style="color:#555555; font-size:13px; font-family:'Open Sans', Arial; margin:0; display:block;">Enviado por <%= @comment.author.name %>, <%= short_date_and_hour(@comment.created_at) %></span>
+    <span style="color:#555555; font-size:13px; font-family:'Open Sans', Arial; margin:0; display:block;">Enviado por <%= @comment.author.name %>, <%= short_date_and_hour(Time.now) %></span>
   </td>
 </tr>
