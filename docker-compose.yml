@@ -1,5 +1,5 @@
 zup-api:
-  image: institutotim/zup-api:cascavel1.3
+  image: timcr/zup-api
   env_file:
     - ../config/api.env
   volumes:
@@ -19,16 +19,18 @@ postgres:
     - ../config/postgres.env
   volumes:
     - /opt/zup/postgres-data:/var/lib/postgresql/data
+#  ports:
+#    - 5432:5432
 
 redis:
   image: redis:2.8
 
 web:
-  image: institutotim/zup-web:v1.1.11
+  image: timcr/zup-web
   env_file:
     - ../config/web.env
   volumes:
    - /etc/localtime:/etc/localtime:ro
    - /opt/zup/logs/nginx:/var/log/nginx
   ports:
-    - 8080:80
+    - 80:80

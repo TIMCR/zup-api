@@ -1,0 +1,971 @@
+{
+    "name": "bi_reports_items2", 
+    "info": {}, 
+    "label": "Relatos", 
+    "aggregates": [
+        {
+            "name": "report_count", 
+            "info": {
+                "cv-formatter": "value && value.toString()"
+            }, 
+            "label": "Quantidade de Relatos", 
+            "ref": "report_count", 
+            "function": "count"
+        }, 
+        {
+            "name": "comments_avg", 
+            "info": {}, 
+            "label": "M\u00e9dia de coment\u00e1rios", 
+            "ref": "comments_avg", 
+            "function": "avg", 
+            "measure": "comments_count"
+        }, 
+        {
+            "name": "comments_sum", 
+            "info": {
+                "cv-formatter": "value && value.toString()"
+            }, 
+            "label": "Total de coment\u00e1rios", 
+            "ref": "comments_sum", 
+            "function": "sum", 
+            "measure": "comments_count"
+        }, 
+        {
+            "name": "avg_resolve_time_days", 
+            "info": {}, 
+            "label": "Tempo de resolu\u00e7\u00e3o m\u00e9dio (dias)", 
+            "ref": "avg_resolve_time_days", 
+            "function": "avg", 
+            "measure": "resolve_time_days"
+        }, 
+        {
+            "name": "avg_resolve_time_hours", 
+            "info": {}, 
+            "label": "Tempo de resolu\u00e7\u00e3o m\u00e9dio (horas)", 
+            "ref": "avg_resolve_time_hours", 
+            "function": "avg", 
+            "measure": "resolve_time_hours"
+        }, 
+        {
+            "name": "avg_overdue_time_days", 
+            "info": {}, 
+            "label": "Tempo de atraso m\u00e9dio (dias)", 
+            "ref": "avg_overdue_time_days", 
+            "function": "avg", 
+            "measure": "overdue_time_days"
+        }, 
+        {
+            "name": "avg_overdue_time_hours", 
+            "info": {}, 
+            "label": "Tempo de atraso m\u00e9dio (horas)", 
+            "ref": "avg_overdue_time_hours", 
+            "function": "avg", 
+            "measure": "overdue_time_hours"
+        }
+    ], 
+    "measures": [
+        {
+            "name": "comments_count", 
+            "info": {}, 
+            "label": "Coment\u00e1rios", 
+            "ref": "comments_count", 
+            "aggregates": [
+                "avg"
+            ]
+        }, 
+        {
+            "name": "resolve_time_days", 
+            "info": {}, 
+            "label": "Tempo de resolu\u00e7\u00e3o (dias)", 
+            "ref": "resolve_time_days", 
+            "aggregates": [
+                "avg"
+            ]
+        }, 
+        {
+            "name": "resolve_time_hours", 
+            "info": {}, 
+            "label": "Tempo de resolu\u00e7\u00e3o (horas)", 
+            "ref": "resolve_time_hours", 
+            "aggregates": [
+                "avg"
+            ]
+        }, 
+        {
+            "name": "overdue_time_days", 
+            "info": {}, 
+            "label": "Tempo de atraso (dias)", 
+            "ref": "overdue_time_days", 
+            "aggregates": [
+                "avg"
+            ]
+        }, 
+        {
+            "name": "overdue_time_hours", 
+            "info": {}, 
+            "label": "Tempo de atraso (horas)", 
+            "ref": "overdue_time_hours", 
+            "aggregates": [
+                "avg"
+            ]
+        }
+    ], 
+    "details": [], 
+    "dimensions": [
+        {
+            "name": "created_at", 
+            "info": {}, 
+            "label": "Data de cria\u00e7\u00e3o", 
+            "default_hierarchy_name": "default", 
+            "role": "time", 
+            "levels": [
+                {
+                    "name": "year", 
+                    "info": {}, 
+                    "label": "Ano", 
+                    "role": "year", 
+                    "key": "year", 
+                    "label_attribute": "year", 
+                    "order_attribute": "year", 
+                    "attributes": [
+                        {
+                            "name": "year", 
+                            "info": {}, 
+                            "label": "Ano", 
+                            "ref": "created_at.year", 
+                            "locales": []
+                        }
+                    ]
+                }, 
+                {
+                    "name": "month", 
+                    "info": {}, 
+                    "label": "M\u00eas", 
+                    "role": "month", 
+                    "key": "month", 
+                    "label_attribute": "month", 
+                    "order_attribute": "month", 
+                    "attributes": [
+                        {
+                            "name": "month", 
+                            "info": {}, 
+                            "label": "M\u00eas", 
+                            "ref": "created_at.month", 
+                            "locales": []
+                        }
+                    ]
+                }, 
+                {
+                    "name": "day", 
+                    "info": {}, 
+                    "label": "Dia", 
+                    "role": "day", 
+                    "key": "day", 
+                    "label_attribute": "day", 
+                    "order_attribute": "day", 
+                    "attributes": [
+                        {
+                            "name": "day", 
+                            "info": {}, 
+                            "label": "Dia", 
+                            "ref": "created_at.day", 
+                            "locales": []
+                        }
+                    ]
+                }
+            ], 
+            "hierarchies": [
+                {
+                    "name": "default", 
+                    "info": {}, 
+                    "levels": [
+                        "year", 
+                        "month", 
+                        "day"
+                    ]
+                }
+            ], 
+            "is_flat": false, 
+            "has_details": false
+        }, 
+        {
+            "name": "overdue_at", 
+            "info": {}, 
+            "label": "Data em atraso", 
+            "default_hierarchy_name": "default", 
+            "role": "time", 
+            "levels": [
+                {
+                    "name": "year", 
+                    "info": {}, 
+                    "label": "Ano", 
+                    "role": "year", 
+                    "key": "year", 
+                    "label_attribute": "year", 
+                    "order_attribute": "year", 
+                    "attributes": [
+                        {
+                            "name": "year", 
+                            "info": {}, 
+                            "label": "Ano", 
+                            "ref": "overdue_at.year", 
+                            "locales": []
+                        }
+                    ]
+                }, 
+                {
+                    "name": "month", 
+                    "info": {}, 
+                    "label": "M\u00eas", 
+                    "role": "month", 
+                    "key": "month", 
+                    "label_attribute": "month", 
+                    "order_attribute": "month", 
+                    "attributes": [
+                        {
+                            "name": "month", 
+                            "info": {}, 
+                            "label": "M\u00eas", 
+                            "ref": "overdue_at.month", 
+                            "locales": []
+                        }
+                    ]
+                }, 
+                {
+                    "name": "day", 
+                    "info": {}, 
+                    "label": "Dia", 
+                    "role": "day", 
+                    "key": "day", 
+                    "label_attribute": "day", 
+                    "order_attribute": "day", 
+                    "attributes": [
+                        {
+                            "name": "day", 
+                            "info": {}, 
+                            "label": "Dia", 
+                            "ref": "overdue_at.day", 
+                            "locales": []
+                        }
+                    ]
+                }
+            ], 
+            "hierarchies": [
+                {
+                    "name": "default", 
+                    "info": {}, 
+                    "levels": [
+                        "year", 
+                        "month", 
+                        "day"
+                    ]
+                }
+            ], 
+            "is_flat": false, 
+            "has_details": false
+        }, 
+        {
+            "name": "resolved_at", 
+            "info": {}, 
+            "label": "Data de resolu\u00e7\u00e3o", 
+            "default_hierarchy_name": "default", 
+            "role": "time", 
+            "levels": [
+                {
+                    "name": "year", 
+                    "info": {}, 
+                    "label": "Ano", 
+                    "role": "year", 
+                    "key": "year", 
+                    "label_attribute": "year", 
+                    "order_attribute": "year", 
+                    "attributes": [
+                        {
+                            "name": "year", 
+                            "info": {}, 
+                            "label": "Ano", 
+                            "ref": "resolved_at.year", 
+                            "locales": []
+                        }
+                    ]
+                }, 
+                {
+                    "name": "month", 
+                    "info": {}, 
+                    "label": "M\u00eas", 
+                    "role": "month", 
+                    "key": "month", 
+                    "label_attribute": "month", 
+                    "order_attribute": "month", 
+                    "attributes": [
+                        {
+                            "name": "month", 
+                            "info": {}, 
+                            "label": "M\u00eas", 
+                            "ref": "resolved_at.month", 
+                            "locales": []
+                        }
+                    ]
+                }, 
+                {
+                    "name": "day", 
+                    "info": {}, 
+                    "label": "Dia", 
+                    "role": "day", 
+                    "key": "day", 
+                    "label_attribute": "day", 
+                    "order_attribute": "day", 
+                    "attributes": [
+                        {
+                            "name": "day", 
+                            "info": {}, 
+                            "label": "Dia", 
+                            "ref": "resolved_at.day", 
+                            "locales": []
+                        }
+                    ]
+                }
+            ], 
+            "hierarchies": [
+                {
+                    "name": "default", 
+                    "info": {}, 
+                    "levels": [
+                        "year", 
+                        "month", 
+                        "day"
+                    ]
+                }
+            ], 
+            "is_flat": false, 
+            "has_details": false
+        }, 
+        {
+            "name": "reports_category", 
+            "info": {}, 
+            "label": "Categoria de Relato", 
+            "default_hierarchy_name": "default", 
+            "levels": [
+                {
+                    "name": "reports_category", 
+                    "info": {}, 
+                    "label": "Categoria de Relato", 
+                    "key": "id", 
+                    "label_attribute": "title", 
+                    "order_attribute": "id", 
+                    "attributes": [
+                        {
+                            "name": "id", 
+                            "info": {}, 
+                            "ref": "reports_category.id", 
+                            "locales": []
+                        }, 
+                        {
+                            "name": "title", 
+                            "info": {}, 
+                            "ref": "reports_category.title", 
+                            "locales": []
+                        }
+                    ]
+                }
+            ], 
+            "hierarchies": [
+                {
+                    "name": "default", 
+                    "info": {}, 
+                    "levels": [
+                        "reports_category"
+                    ]
+                }
+            ], 
+            "is_flat": true, 
+            "has_details": true
+        }, 
+        {
+            "name": "reports_status", 
+            "info": {}, 
+            "label": "Estado de relato", 
+            "default_hierarchy_name": "default", 
+            "levels": [
+                {
+                    "name": "reports_status", 
+                    "info": {}, 
+                    "label": "Estado de relato", 
+                    "key": "id", 
+                    "label_attribute": "title", 
+                    "order_attribute": "id", 
+                    "attributes": [
+                        {
+                            "name": "id", 
+                            "info": {}, 
+                            "ref": "reports_status.id", 
+                            "locales": []
+                        }, 
+                        {
+                            "name": "title", 
+                            "info": {}, 
+                            "ref": "reports_status.title", 
+                            "locales": []
+                        }
+                    ]
+                }
+            ], 
+            "hierarchies": [
+                {
+                    "name": "default", 
+                    "info": {}, 
+                    "levels": [
+                        "reports_status"
+                    ]
+                }
+            ], 
+            "is_flat": true, 
+            "has_details": true
+        }, 
+        {
+            "name": "reports_perimeter", 
+            "info": {}, 
+            "label": "Per\u00edmetro", 
+            "default_hierarchy_name": "default", 
+            "levels": [
+                {
+                    "name": "reports_perimeter", 
+                    "info": {}, 
+                    "label": "Per\u00edmetro", 
+                    "key": "id", 
+                    "label_attribute": "title", 
+                    "order_attribute": "id", 
+                    "attributes": [
+                        {
+                            "name": "id", 
+                            "info": {}, 
+                            "ref": "reports_perimeter.id", 
+                            "locales": []
+                        }, 
+                        {
+                            "name": "title", 
+                            "info": {}, 
+                            "ref": "reports_perimeter.title", 
+                            "locales": []
+                        }
+                    ]
+                }
+            ], 
+            "hierarchies": [
+                {
+                    "name": "default", 
+                    "info": {}, 
+                    "levels": [
+                        "reports_perimeter"
+                    ]
+                }
+            ], 
+            "is_flat": true, 
+            "has_details": true
+        }, 
+        {
+            "name": "geographic", 
+            "info": {}, 
+            "label": "Refer\u00eancia geogr\u00e1fica", 
+            "default_hierarchy_name": "region", 
+            "levels": [
+                {
+                    "name": "country", 
+                    "info": {}, 
+                    "label": "Pa\u00eds", 
+                    "key": "country", 
+                    "label_attribute": "country", 
+                    "order_attribute": "country", 
+                    "attributes": [
+                        {
+                            "name": "country", 
+                            "info": {}, 
+                            "label": "Pa\u00eds", 
+                            "ref": "geographic.country", 
+                            "locales": []
+                        }
+                    ]
+                }, 
+                {
+                    "name": "state", 
+                    "info": {}, 
+                    "label": "Estado", 
+                    "key": "state", 
+                    "label_attribute": "state", 
+                    "order_attribute": "state", 
+                    "attributes": [
+                        {
+                            "name": "state", 
+                            "info": {}, 
+                            "label": "Estado", 
+                            "ref": "geographic.state", 
+                            "locales": []
+                        }
+                    ]
+                }, 
+                {
+                    "name": "city", 
+                    "info": {}, 
+                    "label": "Cidade", 
+                    "key": "city", 
+                    "label_attribute": "city", 
+                    "order_attribute": "city", 
+                    "attributes": [
+                        {
+                            "name": "city", 
+                            "info": {}, 
+                            "label": "Cidade", 
+                            "ref": "geographic.city", 
+                            "locales": []
+                        }
+                    ]
+                }, 
+                {
+                    "name": "district", 
+                    "info": {}, 
+                    "label": "Bairro", 
+                    "key": "district", 
+                    "label_attribute": "district", 
+                    "order_attribute": "district", 
+                    "attributes": [
+                        {
+                            "name": "district", 
+                            "info": {}, 
+                            "label": "Bairro", 
+                            "ref": "geographic.district", 
+                            "locales": []
+                        }
+                    ]
+                }, 
+                {
+                    "name": "postal_code", 
+                    "info": {}, 
+                    "label": "CEP", 
+                    "key": "postal_code", 
+                    "label_attribute": "postal_code", 
+                    "order_attribute": "postal_code", 
+                    "attributes": [
+                        {
+                            "name": "postal_code", 
+                            "info": {}, 
+                            "label": "CEP", 
+                            "ref": "geographic.postal_code", 
+                            "locales": []
+                        }
+                    ]
+                }, 
+                {
+                    "name": "address", 
+                    "info": {}, 
+                    "label": "Endere\u00e7o", 
+                    "key": "address", 
+                    "label_attribute": "address", 
+                    "order_attribute": "address", 
+                    "attributes": [
+                        {
+                            "name": "address", 
+                            "info": {}, 
+                            "label": "Endere\u00e7o", 
+                            "ref": "geographic.address", 
+                            "locales": []
+                        }
+                    ]
+                }, 
+                {
+                    "name": "reference", 
+                    "info": {}, 
+                    "label": "Refer\u00eancia", 
+                    "key": "reference", 
+                    "label_attribute": "reference", 
+                    "order_attribute": "reference", 
+                    "attributes": [
+                        {
+                            "name": "reference", 
+                            "info": {}, 
+                            "label": "Refer\u00eancia", 
+                            "ref": "geographic.reference", 
+                            "locales": []
+                        }
+                    ]
+                }
+            ], 
+            "hierarchies": [
+                {
+                    "name": "region", 
+                    "info": {}, 
+                    "label": "Regi\u00e3o", 
+                    "levels": [
+                        "district", 
+                        "city", 
+                        "state", 
+                        "country"
+                    ]
+                }, 
+                {
+                    "name": "address", 
+                    "info": {}, 
+                    "label": "Endere\u00e7o", 
+                    "levels": [
+                        "address", 
+                        "reference", 
+                        "postal_code"
+                    ]
+                }
+            ], 
+            "is_flat": false, 
+            "has_details": false
+        }, 
+        {
+            "name": "confidential", 
+            "info": {
+                "cv-boolean-label": {
+                    "false": "P\u00fablico", 
+                    "true": "Privado"
+                }
+            }, 
+            "label": "Privado", 
+            "default_hierarchy_name": "default", 
+            "levels": [
+                {
+                    "name": "confidential", 
+                    "info": {}, 
+                    "label": "Privado", 
+                    "key": "confidential", 
+                    "label_attribute": "confidential", 
+                    "order_attribute": "confidential", 
+                    "attributes": [
+                        {
+                            "name": "confidential", 
+                            "info": {}, 
+                            "label": "Privado", 
+                            "ref": "confidential", 
+                            "locales": []
+                        }
+                    ]
+                }
+            ], 
+            "hierarchies": [
+                {
+                    "name": "default", 
+                    "info": {}, 
+                    "levels": [
+                        "confidential"
+                    ]
+                }
+            ], 
+            "is_flat": true, 
+            "has_details": false
+        }, 
+        {
+            "name": "overdue", 
+            "info": {
+                "cv-boolean-label": {
+                    "false": "Em dia", 
+                    "true": "Atrasado"
+                }
+            }, 
+            "label": "Atrasado", 
+            "default_hierarchy_name": "default", 
+            "levels": [
+                {
+                    "name": "overdue", 
+                    "info": {}, 
+                    "label": "Atrasado", 
+                    "key": "overdue", 
+                    "label_attribute": "overdue", 
+                    "order_attribute": "overdue", 
+                    "attributes": [
+                        {
+                            "name": "overdue", 
+                            "info": {}, 
+                            "label": "Atrasado", 
+                            "ref": "overdue", 
+                            "locales": []
+                        }
+                    ]
+                }
+            ], 
+            "hierarchies": [
+                {
+                    "name": "default", 
+                    "info": {}, 
+                    "levels": [
+                        "overdue"
+                    ]
+                }
+            ], 
+            "is_flat": true, 
+            "has_details": false
+        }, 
+        {
+            "name": "reporter", 
+            "info": {}, 
+            "label": "Autor", 
+            "default_hierarchy_name": "default", 
+            "levels": [
+                {
+                    "name": "user", 
+                    "info": {}, 
+                    "label": "Usu\u00e1rio Solicitante", 
+                    "key": "id", 
+                    "label_attribute": "name", 
+                    "order_attribute": "id", 
+                    "attributes": [
+                        {
+                            "name": "id", 
+                            "info": {}, 
+                            "ref": "reporter.id", 
+                            "locales": []
+                        }, 
+                        {
+                            "name": "name", 
+                            "info": {}, 
+                            "ref": "reporter.name", 
+                            "locales": []
+                        }
+                    ]
+                }
+            ], 
+            "hierarchies": [
+                {
+                    "name": "default", 
+                    "info": {}, 
+                    "levels": [
+                        "user"
+                    ]
+                }
+            ], 
+            "is_flat": true, 
+            "has_details": true
+        }, 
+        {
+            "name": "assigned_user", 
+            "info": {}, 
+            "label": "Usu\u00e1rio respons\u00e1vel", 
+            "default_hierarchy_name": "default", 
+            "levels": [
+                {
+                    "name": "user", 
+                    "info": {}, 
+                    "label": "Usu\u00e1rio Solicitante", 
+                    "key": "id", 
+                    "label_attribute": "name", 
+                    "order_attribute": "id", 
+                    "attributes": [
+                        {
+                            "name": "id", 
+                            "info": {}, 
+                            "ref": "assigned_user.id", 
+                            "locales": []
+                        }, 
+                        {
+                            "name": "name", 
+                            "info": {}, 
+                            "ref": "assigned_user.name", 
+                            "locales": []
+                        }
+                    ]
+                }
+            ], 
+            "hierarchies": [
+                {
+                    "name": "default", 
+                    "info": {}, 
+                    "levels": [
+                        "user"
+                    ]
+                }
+            ], 
+            "is_flat": true, 
+            "has_details": true
+        }, 
+        {
+            "name": "namespace", 
+            "info": {}, 
+            "label": "Localidade", 
+            "default_hierarchy_name": "default", 
+            "levels": [
+                {
+                    "name": "namespace", 
+                    "info": {}, 
+                    "label": "Localidade", 
+                    "key": "id", 
+                    "label_attribute": "name", 
+                    "order_attribute": "id", 
+                    "attributes": [
+                        {
+                            "name": "id", 
+                            "info": {}, 
+                            "ref": "namespace.id", 
+                            "locales": []
+                        }, 
+                        {
+                            "name": "name", 
+                            "info": {}, 
+                            "ref": "namespace.name", 
+                            "locales": []
+                        }
+                    ]
+                }
+            ], 
+            "hierarchies": [
+                {
+                    "name": "default", 
+                    "info": {}, 
+                    "levels": [
+                        "namespace"
+                    ]
+                }
+            ], 
+            "is_flat": true, 
+            "has_details": true
+        }, 
+        {
+            "name": "user", 
+            "info": {}, 
+            "label": "Usu\u00e1rio Solicitante", 
+            "default_hierarchy_name": "default", 
+            "levels": [
+                {
+                    "name": "user", 
+                    "info": {}, 
+                    "label": "Usu\u00e1rio Solicitante", 
+                    "key": "id", 
+                    "label_attribute": "name", 
+                    "order_attribute": "id", 
+                    "attributes": [
+                        {
+                            "name": "id", 
+                            "info": {}, 
+                            "ref": "user.id", 
+                            "locales": []
+                        }, 
+                        {
+                            "name": "name", 
+                            "info": {}, 
+                            "ref": "user.name", 
+                            "locales": []
+                        }
+                    ]
+                }
+            ], 
+            "hierarchies": [
+                {
+                    "name": "default", 
+                    "info": {}, 
+                    "levels": [
+                        "user"
+                    ]
+                }
+            ], 
+            "is_flat": true, 
+            "has_details": true
+        }, 
+        {
+            "name": "solicitation", 
+            "info": {}, 
+            "label": "Tipo de Solicita\u00e7\u00e3o", 
+            "default_hierarchy_name": "default", 
+            "levels": [
+                {
+                    "name": "solicitation", 
+                    "info": {}, 
+                    "label": "Tipo de Solicita\u00e7\u00e3o", 
+                    "key": "solicitation", 
+                    "label_attribute": "solicitation", 
+                    "order_attribute": "solicitation", 
+                    "attributes": [
+                        {
+                            "name": "solicitation", 
+                            "info": {}, 
+                            "label": "Tipo de Solicita\u00e7\u00e3o", 
+                            "ref": "solicitation", 
+                            "locales": []
+                        }
+                    ]
+                }
+            ], 
+            "hierarchies": [
+                {
+                    "name": "default", 
+                    "info": {}, 
+                    "levels": [
+                        "solicitation"
+                    ]
+                }
+            ], 
+            "is_flat": true, 
+            "has_details": false
+        }, 
+        {
+            "name": "assigned_group", 
+            "info": {}, 
+            "label": "Grupo solucionador atribu\u00eddo", 
+            "default_hierarchy_name": "default", 
+            "levels": [
+                {
+                    "name": "group", 
+                    "info": {}, 
+                    "label": "Grupo solucionador atribu\u00eddo", 
+                    "key": "id", 
+                    "label_attribute": "name", 
+                    "order_attribute": "id", 
+                    "attributes": [
+                        {
+                            "name": "id", 
+                            "info": {}, 
+                            "ref": "assigned_group.id", 
+                            "locales": []
+                        }, 
+                        {
+                            "name": "name", 
+                            "info": {}, 
+                            "ref": "assigned_group.name", 
+                            "locales": []
+                        }
+                    ]
+                }
+            ], 
+            "hierarchies": [
+                {
+                    "name": "default", 
+                    "info": {}, 
+                    "levels": [
+                        "group"
+                    ]
+                }
+            ], 
+            "is_flat": true, 
+            "has_details": true
+        }
+    ], 
+    "features": {
+        "post_aggregate_functions": [
+            "smvar", 
+            "sms", 
+            "smrsd", 
+            "wma", 
+            "smstd", 
+            "sma"
+        ], 
+        "aggregate_functions": [
+            "count", 
+            "min", 
+            "max", 
+            "sum", 
+            "custom", 
+            "count_nonempty", 
+            "stddev", 
+            "variance", 
+            "avg", 
+            "count_distinct"
+        ], 
+        "actions": [
+            "aggregate", 
+            "fact", 
+            "members", 
+            "facts", 
+            "cell"
+        ]
+    }
+}

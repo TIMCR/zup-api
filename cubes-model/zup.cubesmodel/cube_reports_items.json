@@ -1,5 +1,6 @@
 {
   "name": "bi_reports_items",
+  "alias": "reports_items",
   "label": "Relatos",
   "dimensions": [
     "created_at",
